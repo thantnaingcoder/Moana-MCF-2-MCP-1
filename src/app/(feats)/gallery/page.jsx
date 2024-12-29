@@ -1,5 +1,5 @@
-const page = () => {
+const GalleryPage = () => {
   return <div>gallery page</div>;
 };
 
-export default page;
+export default GalleryPage;

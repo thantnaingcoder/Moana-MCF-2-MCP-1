@@ -1,9 +1,28 @@
+@import url('https://fonts.googleapis.com/css2?family=Leckerli+One&family=Montserrat+Subrayada:wght@400;700&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap');
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
 body {
   font-family: Arial, Helvetica, sans-serif;
+}
+
+@layer components {
+  .bg-gradient {
+    @apply bg-gradient-to-b from-[#1badff] to-[#737373]
+  }
+
+  .text-gradient {
+    @apply bg-gradient-to-b from-[#1badff] to-[#737373] bg-clip-text text-transparent
+  }
+
+  .btn-gradient {
+    @apply bg-gradient-to-r from-[#1badff] to-[#737373]
+  }
+
+
+  
 }
 
 @layer base {
@@ -69,4 +88,6 @@ body {
   body {
     @apply bg-background text-foreground;
   }
+
+
 }

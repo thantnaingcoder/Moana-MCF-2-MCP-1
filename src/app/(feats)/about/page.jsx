@@ -1,11 +1,5 @@
-import HeroSession from '@/components/about/HeroSession'
-import { Button } from '@/components/ui/button'
-import React from 'react'
+const AboutPage = () => {
+  return <div>about</div>;
+};
 
-const page = () => {
-  return (
-    <div><Button>click</Button></div>
-  )
-}
-
-export default page
+export default AboutPage;

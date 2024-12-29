@@ -1,7 +1,3 @@
-
-
-export default function Home() {
-  return (
-    <div>Home page</div>
-  );
+export default function HomePage() {
+  return <div>home page</div>;
 }

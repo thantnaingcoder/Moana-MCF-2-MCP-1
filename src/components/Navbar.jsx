@@ -1,9 +1,34 @@
+"use client";
 import Image from "next/image";
 import Logo from "../assets/home-logo.png";
 import PageLayout from "./PageLayout";
-
+import { usePathname } from 'next/navigation';
 import Link from 'next/link';
 const Navbar = () => {
+  const pathname = usePathname();
+  const navbarItem = [
+    {
+      name: "Home",
+      href: "/",
+    },
+    {
+      name: "About",
+      href: "/about",
+    },
+    {
+      name: "Characters",
+      href: "/characters",
+    },
+    {
+      name: "Products",
+      href: "/products",
+    },
+    {
+      name: "Gallery",
+      href: "/gallery",
+    },
+
+  ]
   return <>
 
        <PageLayout>
@@ -17,31 +42,14 @@ const Navbar = () => {
 
         {/* Navigation Links */}
         <ul className="flex space-x-6">
-          <li>
-            <Link href="/" className="hover:text-gray-400">
-              Home
+         {navbarItem.map((item,index) => (
+            <li>
+            <Link key={index} href={item.href} className={` ${pathname === item.href ? "text-moana-500" : ""}  hover:text-gray-400`}>
+              {item.name}
             </Link>
           </li>
-          <li>
-            <Link href="/about" className="hover:text-gray-400">
-              About
-            </Link>
-          </li>
-          <li>
-            <Link href="/characters" className="hover:text-gray-400">
-              Characters
-            </Link>
-          </li>
-          <li>
-            <Link href="/products" className="hover:text-gray-400">
-              Products
-            </Link>
-          </li>
-          <li>
-            <Link href="/gallery" className="hover:text-gray-400">
-              Gallery
-            </Link>
-          </li>
+         ))}
+       
         </ul>
       </div>
     </nav>

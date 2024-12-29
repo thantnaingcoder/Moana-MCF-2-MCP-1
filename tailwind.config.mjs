@@ -7,8 +7,29 @@ export default {
     "./src/app/**/*.{js,ts,jsx,tsx,mdx}",
   ],
   theme: {
+	fontFamily: {
+		sans: ["Roboto", "Padauk", "sans-serif"],
+	  },
   	extend: {
+		fontFamily: {
+			heading: ["Montserrat Subrayada", "serif"],
+			label: ["Leckerli One", "serif"],
+		  },
   		colors: {
+			'moana': {
+        '50': '#eff8ff',
+        '100': '#dff0ff',
+        '200': '#b8e3ff',
+        '300': '#78ceff',
+        '400': '#1badff',
+        '500': '#069cf1',
+        '600': '#007bce',
+        '700': '#0062a7',
+        '800': '#02538a',
+        '900': '#084572',
+        '950': '#062b4b',
+    },
+    
   			background: 'hsl(var(--background))',
   			foreground: 'hsl(var(--foreground))',
   			card: {
@@ -55,6 +76,7 @@ export default {
   			md: 'calc(var(--radius) - 2px)',
   			sm: 'calc(var(--radius) - 4px)'
   		}
+
   	}
   },
   plugins: [require("tailwindcss-animate")],
