@@ -43,8 +43,8 @@ const Navbar = () => {
         {/* Navigation Links */}
         <ul className="flex space-x-6">
          {navbarItem.map((item,index) => (
-            <li>
-            <Link key={index} href={item.href} className={` ${pathname === item.href ? "text-moana-500" : ""}  hover:text-gray-400`}>
+            <li key={index}>
+            <Link href={item.href} className={` ${pathname === item.href ? "text-moana-500" : ""}  hover:text-gray-400`}>
               {item.name}
             </Link>
           </li>
