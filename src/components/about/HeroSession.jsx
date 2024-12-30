@@ -2,7 +2,7 @@ import React from 'react'
 
 const HeroSession = () => {
   return (
-    <div>HeroSession</div>
+    <div>test par</div>
   )
 }
 
