@@ -33,7 +33,7 @@ const Navbar = () => {
 
        <PageLayout>
        <nav >
-      <div className="container mx-auto flex items-center justify-between py-2 ">
+      <div className=" flex items-center justify-between py-2 ">
         {/* Logo */}
         <Link href="/" >
           <Image src={Logo} alt="Logo" width={120} height={120} className="mr-2" />
@@ -41,7 +41,7 @@ const Navbar = () => {
         </Link>
 
         {/* Navigation Links */}
-        <ul className="flex space-x-6">
+        <ul className="flex md:space-x-6">
          {navbarItem.map((item,index) => (
             <li key={index}>
             <Link href={item.href} className={` ${pathname === item.href ? "text-moana-500" : ""}  hover:text-gray-400`}>
