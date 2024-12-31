@@ -10,7 +10,7 @@ const AboutHeroSession = () => {
   return <div>
         <div className=" relative w-full">
             
-           <Image className=" w-full h-full object-contain  " src={AboutHeroImage} alt="about hero image" />
+           <Image className=" w-full object-cover  " src={AboutHeroImage} alt="about hero image" />
            
             <div className="absolute bottom-0  w-full"><Image className="   w-full object-contain   " src={Vector} alt="wave" /></div>
            

@@ -1,102 +1,122 @@
-'use client'
-import Wave from "../../assets/about-images/makingVideo.png";
+"use client";
 
-import { YouTubeEmbed } from '@next/third-parties/google'
-import { ChevronLeft, ChevronRight } from 'lucide-react'
-import { useState } from 'react'
+import { useState, useRef, useEffect } from "react";
 
-import { Button } from '@/components/ui/button'
-import { Card, CardContent } from '@/components/ui/card'
+import PageLayout from "../PageLayout";
 
-// Sample video data - replace with your actual video IDs
 const videos = [
-  { id: 'video1', title: 'Behind the Scenes - Part 1', videoId: 'ogfYd705cRs' },
-  { id: 'video2', title: 'Behind the Scenes - Part 2', videoId: 'ogfYd705cRs' },
-  { id: 'video3', title: 'Behind the Scenes - Part 3', videoId: 'ogfYd705cRs' },
-]
+  {
+    id: "behind-scenes-1",
+    title: "Behind The Scenes with ",
+    videoId: "rB5MpMDMpas",
+    thumbnail: "/placeholder.svg?height=720&width=1280",
+  },
+  {
+    id: "recording-session",
+    title: "Voice Recording Session - You're Welcome",
+    videoId: "kmv2lYQ-Pck",
+    thumbnail: "/placeholder.svg?height=720&width=1280",
+  },
+  {
+    id: "animation-process",
+    title: "The Animation Process",
+    videoId: "d_ttuEySXTc",
+    thumbnail: "/placeholder.svg?height=720&width=1280",
+  },
+];
 
-export default function MakingOfTheMovie() {
-  const [currentVideo, setCurrentVideo] = useState(0)
+const YouTubeEmbed = ({ videoid, height, playing, onEnded, muted }) => {
+  const iframeRef = useRef(null);
 
-  const nextVideo = () => {
-    setCurrentVideo((prev) => (prev + 1) % videos.length)
-  }
-
-  const previousVideo = () => {
-    setCurrentVideo((prev) => (prev - 1 + videos.length) % videos.length)
-  }
+  useEffect(() => {
+    const iframe = iframeRef.current;
+    if (iframe) {
+      if (playing) {
+        iframe.contentWindow?.postMessage(
+          '{"event":"command","func":"playVideo","args":""}',
+          "*"
+        );
+      } else {
+        iframe.contentWindow?.postMessage(
+          '{"event":"command","func":"pauseVideo","args":""}',
+          "*"
+        );
+      }
+    }
+  }, [playing]);
 
   return (
-    <div className="container mx-auto px-4 py-8">
-      <h1 className="text-4xl font-bold text-center mb-8 text-blue-600">
-        MAKING OF THE MOVIE
-      </h1>
-      
-      <div className="max-w-4xl mx-auto">
-        <Card className="bg-gray-900 rounded-xl overflow-hidden">
-          <CardContent className="p-0">
-            <div className="aspect-video w-full">
-              <YouTubeEmbed
-                videoid={videos[currentVideo].videoId}
-                height={400}
-                params="controls=1&rel=0"
-              />
-            </div>
-          </CardContent>
-        </Card>
+    <iframe
+      ref={iframeRef}
+      width="100%"
+      height={height}
+      src={`https://www.youtube.com/embed/${videoid}?enablejsapi=1&autoplay=0&mute=${
+        muted ? 1 : 0
+      }`}
+      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+      allowFullScreen
+    ></iframe>
+  );
+};
 
-        <div className="mt-6 flex items-center justify-between gap-4">
-          <Button
-            variant="outline"
-            size="icon"
-            onClick={previousVideo}
-            className="rounded-full"
-          >
-            <ChevronLeft className="h-4 w-4" />
-          </Button>
+export default function MoanaGallery() {
+  const [currentVideo, setCurrentVideo] = useState(null);
+  const handleVideoClick = (index) => {
+    setCurrentVideo(currentVideo === index ? null : index);
+  };
 
-          <h2 className="text-xl font-semibold">
-            {videos[currentVideo].title}
-          </h2>
+  const handleVideoEnd = () => {
+    setCurrentVideo(null);
+  };
 
-          <Button
-            variant="outline"
-            size="icon"
-            onClick={nextVideo}
-            className="rounded-full"
-          >
-            <ChevronRight className="h-4 w-4" />
-          </Button>
+  return (
+    <PageLayout>
+        <div className=" ">
+        <div className="mb-8">
+          <h1 className="text-4xl text-center font-heading  md:text-5xl font-bold text-gradient tracking-wide">
+            MAKING OF THE MOVIE
+          </h1>
         </div>
+    
 
-        <div className="grid grid-cols-3 gap-4 mt-8">
+      <div className="">
+        <div className="flex overflow-x-scroll   gap-6 ">
           {videos.map((video, index) => (
-            <Card
-              key={video.id}
-              className={`cursor-pointer transition-all ${
-                currentVideo === index ? 'ring-2 ring-blue-500' : ''
-              }`}
-              onClick={() => setCurrentVideo(index)}
-            >
-              <CardContent className="p-0">
-                <div className="aspect-video relative group">
-                  <YouTubeEmbed
-                    videoid={video.videoId}
-                    height={150}
-                    params="controls=0"
-                  />
-                  <div className="absolute inset-0 bg-black bg-opacity-50 group-hover:bg-opacity-30 transition-all flex items-center justify-center">
-                    <div className="w-12 h-12 rounded-full bg-red-600 flex items-center justify-center">
-                      <div className="w-0 h-0 border-t-8 border-t-transparent border-l-12 border-l-white border-b-8 border-b-transparent ml-1" />
-                    </div>
+            <div key={video.videoId} className=" w-full h-full">
+              <div className="relative w-[600px]  h-80">
+                <YouTubeEmbed
+                  videoid={video.videoId}
+                  height={"100%"}
+                  playing={currentVideo === index}
+                  onEnded={handleVideoEnd}
+                  muted={false}
+                />
+                {currentVideo !== index && (
+                  <div
+                    className="absolute inset-0 bg-black bg-opacity-50 flex items-center justify-center cursor-pointer"
+                    onClick={() => handleVideoClick(index)}
+                  >
+                    <svg
+                      className="w-20 hidden h-20 text-white"
+                      fill="red"
+                      viewBox="0 0 20 20"
+                    >
+                      <path
+                        d="M10 18a8 8 0 100-16 8 8 0 000 16zM9.555 7.168A1 1 0 008 8v4a1 1 0 001.555.832l3-2a1 1 0 000-1.664l-3-2z"
+                        clipRule="evenodd"
+                        fillRule="evenodd"
+                      ></path>
+                    </svg>
                   </div>
-                </div>
-              </CardContent>
-            </Card>
+                )}
+              </div>
+            
+            </div>
           ))}
         </div>
       </div>
-    </div>
-  )
-}
 
+    </div>
+      </PageLayout>
+  );
+}
