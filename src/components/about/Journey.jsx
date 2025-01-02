@@ -1,6 +1,11 @@
-import JsonToAnimation from "../JsonToAnimation";
-import JourneyAnimation from "../../assets/about-images/ass-json/test.json"
+import J1 from "../../assets/about-images/journey/image_88-removebg-preview 1.png"
+import J2 from "../../assets/about-images/journey/image_93-removebg-preview 1.png"
+import J3 from "../../assets/about-images/journey/image_101.png"
+import J4 from "../../assets/about-images/journey/image_109.png"
+import J5 from "../../assets/about-images/journey/image_110.png"
+import J6 from "../../assets/about-images/journey/image_112.png"
 import PageLayout from "../PageLayout";
+import Image from "next/image"
 const Journey = () => {
    const journeyList = [
     {
@@ -55,9 +60,15 @@ const Journey = () => {
         
 
         <div className=" grid md:grid-cols-2 gap-5">
-        <div className=" mx-auto">
-          <JsonToAnimation jsonData={JourneyAnimation}  />
 
+        <div className=" relative w-full container min-h-[400px] ">
+        <iframe className=" w-full h-full " src="https://lottie.host/embed/417a6f83-9817-4f0f-806c-cd4c1a29c682/fiaEXxVwr9.lottie" />
+        <Image src={J1} alt="J1" className=" absolute md:-left-10 -top-10  object-contain "/>
+        <Image src={J2} alt="J2" className=" absolute md:left-5 left-10 top-20 md:top-32  size-28 md:size-auto   object-contain "/>
+        <Image src={J4} alt="J4" className=" absolute left-40 md:left-52 md:top-36 top-20 size-28 md:size-auto   object-contain "/>
+        <Image src={J5} alt="J5" className=" absolute left-52 md:left-52 top-72    size-28 md:size-auto  object-contain "/>  
+        <Image src={J3} alt="J3" className=" absolute  left-60 bottom-36  size-20 md:size-auto  object-contain "/>
+        <Image src={J6} alt="J6" className=" absolute left-60 bottom-0  size-20 md:size-auto  object-contain "/>
         </div>
 
          <div>
@@ -67,7 +78,7 @@ const Journey = () => {
          </div>
           
         </div>
-        
+
   </div>;
 
   </PageLayout>

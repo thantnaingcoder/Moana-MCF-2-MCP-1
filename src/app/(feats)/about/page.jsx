@@ -5,14 +5,14 @@ import MakingOfTheMovie from "@/components/about/MakingOfTheMovie";
 import MovingLogo from "@/components/about/MovingLogo";
 import Review from "@/components/about/Review";
 import Wave from "@/components/Wave";
-
+import AboutHeroImage from "../../../assets/about-images/about-hero.png";
 const AboutPage = () => {
   return (
     <>
-    <AboutHeroSession/>
+    <AboutHeroSession photo={AboutHeroImage}  page="About"/>
     <MovingLogo/>
     <Awards/>
-    <Wave className={"my-10"}/>
+    <Wave />
     <MakingOfTheMovie/>
     <Journey/>
     <Review/>
