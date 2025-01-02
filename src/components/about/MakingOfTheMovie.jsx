@@ -1,8 +1,9 @@
 "use client";
 
 import { useState, useRef, useEffect } from "react";
-
+import Wave from "../../assets/about-images/wave.png"
 import PageLayout from "../PageLayout";
+import Image from "next/image";
 
 const videos = [
   {
@@ -59,7 +60,7 @@ const YouTubeEmbed = ({ videoid, height, playing, onEnded, muted }) => {
   );
 };
 
-export default function MoanaGallery() {
+export default function MakingOfTheMovie() {
   const [currentVideo, setCurrentVideo] = useState(null);
   const handleVideoClick = (index) => {
     setCurrentVideo(currentVideo === index ? null : index);
@@ -71,16 +72,17 @@ export default function MoanaGallery() {
 
   return (
     <PageLayout>
-        <div className=" ">
-        <div className="mb-8">
-          <h1 className="text-4xl text-center font-heading  md:text-5xl font-bold text-gradient tracking-wide">
+        <div className=" my-10 ">
+        <div className="mb-10  flex justify-center ">
+          <div className="text-4xl relative block font-heading  md:text-5xl font-bold text-gradient tracking-wide">
             MAKING OF THE MOVIE
-          </h1>
+           <div className=" absolute -right-5 -translate-y-6 "> <Image src={Wave} alt="wave"   /></div>
+          </div>
         </div>
     
 
       <div className="">
-        <div className="flex overflow-x-scroll   gap-6 ">
+        <div className="flex flex-nowrap overflow-x-scroll   gap-6 ">
           {videos.map((video, index) => (
             <div key={video.videoId} className=" w-full h-full">
               <div className="relative w-[600px]  h-80">
