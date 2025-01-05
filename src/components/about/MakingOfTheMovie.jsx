@@ -1,9 +1,17 @@
 "use client";
 
 import { useState, useRef, useEffect } from "react";
-import Wave from "../../assets/about-images/wave.png"
+import Wave from "../../assets/about-images/wave.png";
 import PageLayout from "../PageLayout";
 import Image from "next/image";
+import {
+  Carousel,
+  CarouselContent,
+  CarouselItem,
+  CarouselNext,
+  CarouselPrevious,
+} from "@/components/ui/carousel";
+import { Card, CardContent } from "@/components/ui/card";
 
 const videos = [
   {
@@ -72,53 +80,75 @@ export default function MakingOfTheMovie() {
 
   return (
     <PageLayout>
-        <div className=" my-10 ">
+      <div className=" md:my-10  ">
         <div className="mb-10  flex justify-center ">
-          <div className="text-4xl relative block font-heading  md:text-5xl font-bold text-gradient tracking-wide">
+          <div className="text-3xl relative block font-heading  md:text-5xl font-bold text-gradient tracking-wide">
             MAKING OF THE MOVIE
-           <div className=" absolute -right-5 -translate-y-6 "> <Image src={Wave} alt="wave"   /></div>
+            <div className=" absolute -right-5 -translate-y-6 ">
+              {" "}
+              <Image
+                className="  object-contain size-20 md:size-auto  "
+                src={Wave}
+                alt="wave"
+              />
+            </div>
           </div>
         </div>
-    
 
-      <div className="">
-        <div className="flex flex-nowrap overflow-x-scroll   gap-6 ">
-          {videos.map((video, index) => (
-            <div key={video.videoId} className=" w-full h-full">
-              <div className="relative w-[600px]  h-80">
-                <YouTubeEmbed
-                  videoid={video.videoId}
-                  height={"100%"}
-                  playing={currentVideo === index}
-                  onEnded={handleVideoEnd}
-                  muted={false}
-                />
-                {currentVideo !== index && (
-                  <div
-                    className="absolute inset-0 bg-black bg-opacity-50 flex items-center justify-center cursor-pointer"
-                    onClick={() => handleVideoClick(index)}
-                  >
-                    <svg
-                      className="w-20 hidden h-20 text-white"
-                      fill="red"
-                      viewBox="0 0 20 20"
-                    >
-                      <path
-                        d="M10 18a8 8 0 100-16 8 8 0 000 16zM9.555 7.168A1 1 0 008 8v4a1 1 0 001.555.832l3-2a1 1 0 000-1.664l-3-2z"
-                        clipRule="evenodd"
-                        fillRule="evenodd"
-                      ></path>
-                    </svg>
-                  </div>
-                )}
-              </div>
-            
+        <div className="">
+          <Carousel
+            opts={{
+              align: "start",
+            }}
+            className="w-full "
+          >
+            <CarouselContent>
+              {videos.map((video, index) => (
+                <CarouselItem
+                  key={video.id}
+                  className=" md:basis-1/2 lg:basis-1/3"
+                >
+                  <CardContent className="h-full !p-0 flex flex-col justify-between">
+                    <div key={video.videoId} className=" w-full h-full">
+                      <div className="relative w-full h-[300px] md:h-[400px]">
+                        <YouTubeEmbed
+                          videoid={video.videoId}
+                          height={"100%"}
+                          playing={currentVideo === index}
+                          onEnded={handleVideoEnd}
+                          muted={false}
+                        />
+                        {currentVideo !== index && (
+                          <div
+                            className="absolute inset-0 bg-black bg-opacity-50 flex items-center justify-center cursor-pointer"
+                            onClick={() => handleVideoClick(index)}
+                          >
+                            <svg
+                              className="w-20 hidden h-20 text-white"
+                              fill="red"
+                              viewBox="0 0 20 20"
+                            >
+                              <path
+                                d="M10 18a8 8 0 100-16 8 8 0 000 16zM9.555 7.168A1 1 0 008 8v4a1 1 0 001.555.832l3-2a1 1 0 000-1.664l-3-2z"
+                                clipRule="evenodd"
+                                fillRule="evenodd"
+                              ></path>
+                            </svg>
+                          </div>
+                        )}
+                      </div>
+                    </div>
+                  </CardContent>
+                </CarouselItem>
+              ))}
+            </CarouselContent>
+            <div className=" flex md:hidden  justify-center mt-6 md:mt-10 gap-5">
+              <CarouselPrevious />
+              <CarouselNext />
             </div>
-          ))}
+          </Carousel>
         </div>
       </div>
-
-    </div>
-      </PageLayout>
+    </PageLayout>
   );
 }

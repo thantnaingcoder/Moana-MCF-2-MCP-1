@@ -6,6 +6,7 @@ import MovingLogo from "@/components/about/MovingLogo";
 import Review from "@/components/about/Review";
 import Wave from "@/components/Wave";
 import AboutHeroImage from "../../../assets/about-images/about-hero.png";
+import Directors from "@/components/about/Directors";
 const AboutPage = () => {
   return (
     <>
@@ -16,6 +17,7 @@ const AboutPage = () => {
     <MakingOfTheMovie/>
     <Journey/>
     <Review/>
+    <Directors/>
     </>
 
   )
