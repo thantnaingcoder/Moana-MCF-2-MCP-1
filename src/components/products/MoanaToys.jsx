@@ -1,153 +1,133 @@
-'use client'
+"use client";
 
 import Toys1 from "../../assets/products-images/toys/t1.png";
 import Toys2 from "../../assets/products-images//toys/t2.png";
 import Toys3 from "../../assets/products-images/toys/t3.png";
 import Toys4 from "../../assets/products-images/toys/t4.png";
-import * as React from 'react'
-import Image from 'next/image'
-import { ChevronLeft, ChevronRight, Store } from 'lucide-react'
-import { motion, AnimatePresence } from 'framer-motion'
-import { Button } from '@/components/ui/button'
-import { Card } from '@/components/ui/card'
+import * as React from "react";
+import Image from "next/image";
+import { ChevronLeft, ChevronRight, Store } from "lucide-react";
+import { motion, AnimatePresence } from "framer-motion";
+import { Button } from "@/components/ui/button";
+import { Card } from "@/components/ui/card";
 
 import PageLayout from "../PageLayout";
-import PrimaryButton from '../PrimaryButton'
+import PrimaryButton from "../PrimaryButton";
 const MoanaToys = () => {
-    const [currentSlide, setCurrentSlide] = React.useState(0)
+  const [currentSlide, setCurrentSlide] = React.useState(0);
 
-    const previousSlide = () => {
-      setCurrentSlide((prev) => (prev === 0 ? productData.length - 1 : prev - 1))
-    }
-  
-    const nextSlide = () => {
-      setCurrentSlide((prev) => (prev === productData.length - 1 ? 0 : prev + 1))
-    }
-  
+  const previousSlide = () => {
+    setCurrentSlide((prev) => (prev === 0 ? productData.length - 1 : prev - 1));
+  };
+
+  const nextSlide = () => {
+    setCurrentSlide((prev) => (prev === productData.length - 1 ? 0 : prev + 1));
+  };
+
   return (
     <PageLayout>
-      <div className=" my-20">
-     
+      <div className=" my-10 md:my-20">
+        <div className="md:grid  lg:grid-cols-3 gap-5 ">
+          {/* Image Slider */}
+          <div className="m-1 relative col-span-1  rounded-lg">
+            <div className="relative aspect-square">
+              <AnimatePresence initial={false}>
+                <motion.div
+                  key={currentSlide}
+                  initial={{ opacity: 0, x: 40 }}
+                  animate={{ opacity: 1, x: 0 }}
+                  exit={{ opacity: 0 }}
+                  transition={{ duration: 0.5 }}
+                  className="absolute inset-0"
+                >
+                  <Image
+                    src={productData[currentSlide].image}
+                    alt={productData[currentSlide].title}
+                    width={400}
+                    height={400}
+                    className="md:w-full md:h-full max-w-[300px] md:max-w-full mx-auto object-cover"
+                  />
+                </motion.div>
+              </AnimatePresence>
+            </div>
+          </div>
 
-      <div className="md:grid  lg:grid-cols-3 gap-5 ">
-        {/* Image Slider */}
-        <div className="m-1 relative col-span-1  rounded-lg">
-          <div className="relative aspect-square">
-            <AnimatePresence initial={false}>
+          {/* Product Details */}
+          <div className="relative md:ms-10 space-y-6 md:py-5 col-span-1 md:col-span-2">
+            <div className="flex justify-between items-center mx-3 mb-5 md:mb-16">
+              <h1 className=" text-3xl md:text-5xl font-heading text-gradient ">
+                MOANA TOYS
+              </h1>
+              <PrimaryButton>Store</PrimaryButton>
+            </div>
+
+            <AnimatePresence mode="wait">
               <motion.div
                 key={currentSlide}
-                initial={{ opacity: 0 ,x: 40 }}
-                animate={{ opacity: 1 ,x: 0 }}
-                exit={{ opacity: 0 , }}
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                exit={{ opacity: 0, y: -20 }}
                 transition={{ duration: 0.5 }}
-                className="absolute inset-0"
+                className="space-y-6"
               >
-                <Image
-                  src={productData[currentSlide].image}
-                  alt={productData[currentSlide].title}
-                  width={400}
-                  height={400}
-                  className="md:w-full md:h-full max-w-[300px] md:max-w-full mx-auto object-cover"
-                />
+                <h3 className="text-2xl md:text-3xl text-gradient font-label mx-3">
+                  {" "}
+                  {productData[currentSlide].title}
+                </h3>
+                <div className="mx-10 md:mx-20 md:space-y-4">
+                  <ul className="space-y-3 text-gray-600">
+                    {productData[currentSlide].features.map(
+                      (feature, index) => (
+                        <p
+                          key={index}
+                          className="flex items-start text-sm md:text-base gap-2 text-justify"
+                        >
+                          {feature}
+                        </p>
+                      )
+                    )}
+                  </ul>
+                </div>
               </motion.div>
             </AnimatePresence>
-          </div>
 
-       
-         
-        </div>
+            <div className=" absolute -bottom-5 md:bottom-10 ms-20  w-full   flex  gap-5 md:gap-20">
+              {productData.map((_, index) => (
+                <button
+                  key={index}
+                  className={`h-3 w-10 md:w-20   transition-colors ${
+                    currentSlide === index ? "bg-[#2B95CE]" : "bg-gray-300"
+                  }`}
+                  onClick={() => setCurrentSlide(index)}
+                />
+              ))}
+            </div>
 
-        {/* Product Details */}
-        <div className="relative md:ms-10 space-y-6 py-5 col-span-1 md:col-span-2">
-        {/* <AnimatePresence mode="wait">
-           <motion.div 
-              key={currentSlide}
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1}}
-              exit={{ opacity: 0,  }}
-              transition={{ duration: 0.5 }} >
-                <h2 className="text-4xl mb-10 font-heading text-gradient  ">
-                  Moana Toys
-                </h2>
-                
-              </motion.div>
-              </AnimatePresence> */}
-
-       <div className="flex justify-between items-center mb-16">
-        <h1 className=" text-3xl md:text-5xl font-heading text-gradient ">MOANA TOYS</h1>
-         <PrimaryButton>Store</PrimaryButton>
-       </div>
-
-          <AnimatePresence mode="wait">
-            <motion.div
-              key={currentSlide}
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              exit={{ opacity: 0, y: -20 }}
-              transition={{ duration: 0.5 }}
-              className="space-y-6"
+            <Button
+              variant="ghost"
+              size="icon"
+              className=" absolute left-0 top-2/3 md:top-1/2 -translate-y-1/2 "
+              onClick={previousSlide}
             >
-             
+              <ChevronLeft className="h-10 w-10" />
+            </Button>
 
-              {/* <p className="text-gray-600 text-lg">
-                {productData[currentSlide].description}
-              </p> */}
-
-                <h3 className="text-3xl text-gradient font-label"> {productData[currentSlide].title}</h3>
-              <div className="mx-10 md:mx-20 md:space-y-4">
-                <ul className="space-y-3 text-gray-600">
-                  {productData[currentSlide].features.map((feature, index) => (
-                    <p key={index} className="flex items-start text-sm md:text-base gap-2 text-justify">
-                       {feature}
-                    </p>
-                  ))}
-                </ul>
-              </div>
-
-              
-            </motion.div>
-          </AnimatePresence>
-
-          <div className=" absolute bottom-0 md:bottom-10  md:translate-x-1/3  flex gap-5 md:gap-20">
-            {productData.map((_, index) => (
-              <button
-                key={index}
-                className={`h-3 w-20  transition-colors ${
-                  currentSlide === index ? 'bg-[#2B95CE]' : 'bg-gray-300'
-                }`}
-                onClick={() => setCurrentSlide(index)}
-              />
-            ))}
+            <Button
+              variant="ghost"
+              size="icon"
+              className=" absolute right-0 md:right-20 top-2/3 md:top-1/2 -translate-y-1/2 "
+              onClick={nextSlide}
+            >
+              <ChevronRight className="h-10 w-10" />
+            </Button>
           </div>
-
-          <Button
-            variant="ghost"
-            size="icon"
-            className=" absolute left-0 top-1/2 -translate-y-1/2 "
-            onClick={previousSlide}
-          >
-            <ChevronLeft className="h-10 w-10" />
-          </Button>
-
-          <Button
-            variant="ghost"
-            size="icon"
-            className=" absolute right-0 md:right-20 top-1/2 -translate-y-1/2 "
-            onClick={nextSlide}
-          >
-            <ChevronRight className="h-10 w-10" />
-          </Button>
-
         </div>
       </div>
-    </div>
     </PageLayout>
   );
 };
 
 export default MoanaToys;
-
-
 
 export const productData = [
   {
@@ -199,5 +179,3 @@ export const productData = [
     ],
   },
 ];
-;
-  

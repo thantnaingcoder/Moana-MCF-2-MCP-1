@@ -1,14 +1,15 @@
-import Image from "next/image";
 import PageLayout from "../PageLayout";
-import Planner from "../../assets/products-images/planner.png";
-import FlowerAss from "../../assets/products-images/flowerAss1.png";
+import CalendarPng from "../../assets/products-images/calendar.png";
+import Ass1 from "../../assets/products-images/add1.png";
+import Ass2 from "../../assets/products-images/ass2.png";
 import PrimaryButton from "../PrimaryButton";
-import Ass2 from "./../../assets/products-images/ass2.png";
-const WeeklyPlanner = () => {
+import Image from "next/image";
+
+const Calendar = () => {
   return (
     <PageLayout>
-      <div className=" mx-2 my-10 md:my-20 grid grid-cols-1 md:grid-cols-2 gap-10">
-        <div className=" order-2 md:order-1 relative">
+      <div className=" mx-2 my-20 grid grid-cols-1 md:grid-cols-2 gap-10">
+        <div className="  order-2  relative">
           <div className="  space-y-8">
             <h1 className=" text-3xl md:text-5xl font-heading text-gradient  ">
               weekly Planner
@@ -41,22 +42,18 @@ const WeeklyPlanner = () => {
 
             <PrimaryButton>Download pdf</PrimaryButton>
           </div>
-          <Image
-            className=" absolute bottom-0 -left-48  scale-x-[-1]"
-            src={Ass2}
-            alt="Ass2"
-          />
+          {/* <Image className=" absolute bottom-0 -right-52  " src={Ass2} alt="Ass2" /> */}
         </div>
 
-        <div className="md:relative order-1 md:order-2 w-full h-full flex justify-center md:justify-end">
+        <div className=" order-1 md:order-1  md:relative w-full h-full flex justify-center md:justify-start">
           <Image
-            className="  max-w-[70%] md:max-w-full "
-            src={Planner}
+            className=" max-w-[70%] md:max-w-full "
+            src={CalendarPng}
             alt="Weekly Planner"
           />
           <Image
-            className=" hidden md:block md:absolute -top-20 -right-20"
-            src={FlowerAss}
+            className=" hidden md:block md:absolute -top-10 -left-36"
+            src={Ass1}
             alt="flower"
           />
         </div>
@@ -65,4 +62,4 @@ const WeeklyPlanner = () => {
   );
 };
 
-export default WeeklyPlanner;
+export default Calendar;
