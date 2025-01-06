@@ -39,3 +39,45 @@ yarn-error.log*
 # typescript
 *.tsbuildinfo
 next-env.d.ts
+
+# next-video
+./src/assets/best-scence.mp4/*
+!./src/assets/best-scence.mp4/*.json
+!./src/assets/best-scence.mp4/*.js
+!./src/assets/best-scence.mp4/*.ts
+public/_next-video
+
+# next-video
+./src/assets/videos/*
+!./src/assets/videos/*.json
+!./src/assets/videos/*.js
+!./src/assets/videos/*.ts
+public/_next-video
+
+# next-video
+./src/assets/home/videos/*
+!./src/assets/home/videos/*.json
+!./src/assets/home/videos/*.js
+!./src/assets/home/videos/*.ts
+public/_next-video
+
+# next-video
+./src/assets/home/videos/*
+!./src/assets/home/videos/*.json
+!./src/assets/home/videos/*.js
+!./src/assets/home/videos/*.ts
+public/_next-video
+
+# next-video
+videos/*
+!videos/*.json
+!videos/*.js
+!videos/*.ts
+public/_next-video
+
+# next-video
+videos/*
+!videos/*.json
+!videos/*.js
+!videos/*.ts
+public/_next-video

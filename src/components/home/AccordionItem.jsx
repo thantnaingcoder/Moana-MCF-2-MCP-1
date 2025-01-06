@@ -1,6 +1,6 @@
 "use client";
 
-import { LuChevronDown } from "react-icons/lu";
+import { LuMinus, LuPlus } from "react-icons/lu";
 import { motion } from "motion/react";
 import { AnimatePresence } from "motion/react";
 
@@ -14,32 +14,36 @@ const AccordionItem = ({
   };
 
   return (
-    <div
-      onClick={handleToggleFaq}
-      className="border-b cursor-pointer hover:bg-neutral-50 border-neutral-200 mt-6 flex flex-col  justify-center"
-    >
-      <div className="flex justify-between items-center mb-5">
-        <h3 className="sm:text-lg"> {question} </h3>
-
-        <button>
-          <LuChevronDown
-            className={`size-5 ${isOpen ? "rotate-180  " : ""} duration-500`}
-          />
-        </button>
-      </div>
-      {isOpen && (
-        <AnimatePresence>
+    <div className="border-b border-neutral-200">
+      <button
+        className="w-full py-4 flex items-center justify-between text-left hover:bg-neutral-50 transition-colors"
+        onClick={handleToggleFaq}
+      >
+        <span className="text-lg font-medium text-neutral-800">{question}</span>
+        <motion.div
+          animate={{ rotate: isOpen ? 180 : 0 }}
+          transition={{ duration: 0.3, ease: "easeInOut" }}
+        >
+          {isOpen ? (
+            <LuMinus className="size-5 text-neutral-500" />
+          ) : (
+            <LuPlus className="size-5 text-neutral-500" />
+          )}
+        </motion.div>
+      </button>
+      <AnimatePresence initial={false}>
+        {isOpen && (
           <motion.div
-            initial={{ y: -20 }}
-            animate={{ y: 0 }}
-            exit={{ y: 20 }}
+            initial={{ height: 0, opacity: 0 }}
+            animate={{ height: "auto", opacity: 1 }}
+            exit={{ height: 0, opacity: 0 }}
             transition={{ duration: 0.3, ease: "easeInOut" }}
-            className="mb-5"
+            className="overflow-hidden"
           >
-            <p className="sm:text-base text-sm text-neutral-700"> {answer} </p>
+            <div className="py-4 bg-white text-neutral-600">{answer}</div>
           </motion.div>
-        </AnimatePresence>
-      )}
+        )}
+      </AnimatePresence>
     </div>
   );
 };

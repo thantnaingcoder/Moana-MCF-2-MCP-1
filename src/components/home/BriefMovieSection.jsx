@@ -1,6 +1,6 @@
-import BriefMoana from "@/assets/home/brief-moana.png";
+import StoryLine from "@/assets/home/storyline.png";
 import BigWave from "@/assets/home/big-wave.png";
-import BriefFlower from "@/assets/home/brief-flower.png";
+import Flower from "@/assets/home/flower.png";
 import Image from "next/image";
 import PrimaryButton from "../PrimaryButton";
 import PageLayout from "../PageLayout";
@@ -10,18 +10,18 @@ const BriefMovieSection = () => {
     <section className="w-full px-5 xl:px-0 overflow-hidden ">
       <div className="flex justify-end relative">
         <Image
-          src={BriefFlower}
+          src={Flower}
           width={500}
           height={500}
           alt="flower"
-          className="w-20 absolute top-0 translate-x-1/2"
+          className="w-20"
         />
       </div>
       <PageLayout>
         <div className="flex justify-between">
           <div className="w-1/2 lg:block hidden ">
             <Image
-              src={BriefMoana}
+              src={StoryLine}
               width={600}
               height={600}
               priority

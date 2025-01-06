@@ -60,7 +60,7 @@ const Accordion = () => {
   };
 
   return (
-    <div>
+    <div className="divide-y divide-gray-200">
       {faqs.map((faq) => (
         <AccordionItem key={faq.id} faq={faq} updateFaq={updateFaq} />
       ))}
