@@ -1,8 +1,9 @@
 import PenWavePng from "../../assets/products-images/pencil/penWave.png";
 import PenGamePng from "../../assets/products-images/pencil/maze.png";
 import PageLayout from "../PageLayout";
-import PrimaryButton from "../PrimaryButton";
+
 import Image from "next/image";
+import PngToPdfDownloader from "./PngToPdfDownloader";
 
 const PencilGame = () => {
   return (
@@ -27,18 +28,26 @@ const PencilGame = () => {
             </div>
 
             <div className="space-y-5">
-              <h3 className="text-3xl text-gradient font-label">
-                How to play
-              </h3>
-              <p className="flex items-start text-sm md:text-base gap-2 text-justify">
-                Start up: Players must start green arrow point Trace the Path:
-                Players must carefully trace along the path Avoid Obstacles:
-                Stay within the lines and can’t pass object line Time Challenge
-                (Optional): Add a timer to race against the clock
-              </p>
+              <h3 className="text-3xl text-gradient font-label">How to play</h3>
+              <li className="flex items-start text-sm md:text-base gap-2 text-justify">
+                Start up: Players must start green arrow point
+              </li>
+              <li className="flex items-start text-sm md:text-base gap-2 text-justify">
+                Trace the Path: Players must carefully trace along the path
+              </li>
+              <li className="flex items-start text-sm md:text-base gap-2 text-justify">
+                Avoid Obstacles: Stay within the lines and can’t pass object
+                line
+              </li>
+              <li className="flex items-start text-sm md:text-base gap-2 text-justify">
+                Time Challenge (Optional): Add a timer to race against the clock
+              </li>
             </div>
 
-            <PrimaryButton>Download pdf</PrimaryButton>
+            <PngToPdfDownloader
+              imageName="pencil-game"
+              imageIdName="pencil-game-photo"
+            />
           </div>
           <Image
             className=" absolute bottom-10 -right-5 opacity-30  "
@@ -49,6 +58,7 @@ const PencilGame = () => {
 
         <div className="md:relative order-1 md:order-2 w-full h-full flex justify-center md:justify-end">
           <Image
+            id="pencil-game-photo"
             className="  max-w-[70%] md:max-w-full "
             src={PenGamePng}
             alt="gamer"

@@ -4,6 +4,7 @@ import Planner from "../../assets/products-images/planner.png";
 import FlowerAss from "../../assets/products-images/flowerAss1.png";
 import PrimaryButton from "../PrimaryButton";
 import Ass2 from "./../../assets/products-images/ass2.png";
+import PngToPdfDownloader from "./PngToPdfDownloader";
 const WeeklyPlanner = () => {
   return (
     <PageLayout>
@@ -39,7 +40,7 @@ const WeeklyPlanner = () => {
               </p>
             </div>
 
-            <PrimaryButton>Download pdf</PrimaryButton>
+            <PngToPdfDownloader  imageName="weekly-planner" imageIdName="weekly-planner-png-photo"/>
           </div>
           <Image
             className=" absolute bottom-0 -left-48  scale-x-[-1]"
@@ -50,6 +51,7 @@ const WeeklyPlanner = () => {
 
         <div className="md:relative order-1 md:order-2 w-full h-full flex justify-center md:justify-end">
           <Image
+            id="weekly-planner-png-photo"
             className="  max-w-[70%] md:max-w-full "
             src={Planner}
             alt="Weekly Planner"

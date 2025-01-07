@@ -96,7 +96,7 @@ const MoanaToys = () => {
                 <button
                   key={index}
                   className={`h-3 w-10 md:w-20   transition-colors ${
-                    currentSlide === index ? "bg-[#2B95CE]" : "bg-gray-300"
+                    currentSlide === index ? "bg-[#3098C2]" : "bg-gray-300"
                   }`}
                   onClick={() => setCurrentSlide(index)}
                 />

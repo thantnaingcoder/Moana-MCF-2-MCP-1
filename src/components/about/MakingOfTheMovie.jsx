@@ -32,6 +32,12 @@ const videos = [
     videoId: "d_ttuEySXTc",
     thumbnail: "/placeholder.svg?height=720&width=1280",
   },
+  {
+    id: "behind-scenes-2",
+    title: "Behind The Scenes with ",
+    videoId: "4fRdwJch6uo",
+    thumbnail: "/placeholder.svg?height=720&width=1280",
+  },
 ];
 
 const YouTubeEmbed = ({ videoid, height, playing, onEnded, muted }) => {
@@ -80,7 +86,7 @@ export default function MakingOfTheMovie() {
 
   return (
     <PageLayout>
-      <div className=" md:my-10  ">
+      <div className=" select-none md:my-10  ">
         <div className="mb-10  flex justify-center ">
           <div className="text-3xl relative block font-heading  md:text-5xl font-bold text-gradient tracking-wide">
             MAKING OF THE MOVIE
