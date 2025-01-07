@@ -1,9 +1,9 @@
+import React from 'react'
+
 const Footer = () => {
   return (
-    <div className="mt-auto">
-      <div></div>
-    </div>
-  );
-};
+    <div></div>
+  )
+}
 
-export default Footer;
+export default Footer
