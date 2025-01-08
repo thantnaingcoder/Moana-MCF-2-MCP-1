@@ -2,6 +2,8 @@
 import Image from "next/image";
 import Logo from "../assets/home-logo.png";
 
+import PageLayout from "./PageLayout";
+
 import { usePathname } from "next/navigation";
 import Link from "next/link";
 const Navbar = () => {
@@ -43,6 +45,7 @@ const Navbar = () => {
             />
           </Link>
 
+
           {/* Navigation Links */}
           <ul className="flex md:space-x-6">
             {navbarItem.map((item, index) => (
@@ -60,6 +63,7 @@ const Navbar = () => {
           </ul>
         </div>
       </nav>
+
     </>
   );
 };

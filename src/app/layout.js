@@ -4,10 +4,6 @@ import "./globals.css";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 
-
-
-
-
 const geistSans = Geist({
   variable: "--font-geist-sans",
   subsets: ["latin"],
@@ -26,13 +22,14 @@ export const metadata = {
 export default function RootLayout({ children }) {
   return (
     <html lang="en">
-      
       <body
+
         className={`${geistSans.variable} bg-[#F7F7F7] h-screen flex flex-col ${geistMono.variable} overflow-x-hidden antialiased`}
       > 
         <Navbar/>
+
         {children}
-        <Footer/>
+        <Footer />
       </body>
     </html>
   );
