@@ -27,6 +27,7 @@ const Navbar = () => {
       name: "Gallery",
       href: "/gallery",
     },
+
   ];
   return (
     <>
@@ -42,6 +43,7 @@ const Navbar = () => {
                 height={120}
                 className="mr-2"
               />
+
             </Link>
 
             {/* Navigation Links */}
