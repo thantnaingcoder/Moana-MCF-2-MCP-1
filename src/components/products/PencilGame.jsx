@@ -1,11 +1,14 @@
+"use client";
 import PenWavePng from "../../assets/products-images/pencil/penWave.png";
 import PenGamePng from "../../assets/products-images/pencil/maze.png";
 import PageLayout from "../PageLayout";
 
 import Image from "next/image";
 import PngToPdfDownloader from "./PngToPdfDownloader";
+import { useRef } from "react";
 
 const PencilGame = () => {
+  const contentRef = useRef(null);
   return (
     <PageLayout>
       <div className=" mx-2 md:my-20 grid grid-cols-1 md:grid-cols-2 gap-10">
@@ -47,6 +50,7 @@ const PencilGame = () => {
             <PngToPdfDownloader
               imageName="pencil-game"
               imageIdName="pencil-game-photo"
+              ref={contentRef}
             />
           </div>
           <Image
@@ -56,7 +60,7 @@ const PencilGame = () => {
           />
         </div>
 
-        <div className="md:relative order-1 md:order-2 w-full h-full flex justify-center md:justify-end">
+        <div ref={contentRef} className="md:relative order-1 md:order-2 w-full h-full flex justify-center md:justify-end">
           <Image
             id="pencil-game-photo"
             className="  max-w-[70%] md:max-w-full "

@@ -1,11 +1,14 @@
+"use client";
 import Image from "next/image";
 import PageLayout from "../PageLayout";
 import Planner from "../../assets/products-images/planner.png";
 import FlowerAss from "../../assets/products-images/flowerAss1.png";
-import PrimaryButton from "../PrimaryButton";
+
 import Ass2 from "./../../assets/products-images/ass2.png";
 import PngToPdfDownloader from "./PngToPdfDownloader";
+import { useRef } from "react";
 const WeeklyPlanner = () => {
+  const contentRef = useRef(null);
   return (
     <PageLayout>
       <div className=" mx-2 my-10 md:my-20 grid grid-cols-1 md:grid-cols-2 gap-10">
@@ -40,7 +43,11 @@ const WeeklyPlanner = () => {
               </p>
             </div>
 
-            <PngToPdfDownloader  imageName="weekly-planner" imageIdName="weekly-planner-png-photo"/>
+            <PngToPdfDownloader
+              imageName="weekly-planner"
+              imageIdName="weekly-planner-png-photo"
+              ref={contentRef}
+            />
           </div>
           <Image
             className=" absolute bottom-0 -left-48  scale-x-[-1]"
@@ -49,7 +56,7 @@ const WeeklyPlanner = () => {
           />
         </div>
 
-        <div className="md:relative order-1 md:order-2 w-full h-full flex justify-center md:justify-end">
+        <div ref={contentRef} className="md:relative order-1 md:order-2 w-full h-full flex justify-center md:justify-end">
           <Image
             id="weekly-planner-png-photo"
             className="  max-w-[70%] md:max-w-full "

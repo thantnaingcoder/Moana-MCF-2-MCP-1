@@ -35,8 +35,8 @@ const Directors = () => {
   return (
     <PageLayout>
       <div className=" p-5 md:my-20 md:p-3 grid  md:grid-cols-2 lg:grid-cols-4 gap-5">
-        {Directors.map((director) => (
-          <DirectorCard photo={director.photo} name={director.name} role={director.role} />
+        {Directors.map((director,index) => (
+          <DirectorCard key={index} photo={director.photo} name={director.name} role={director.role} />
         ))}  
       </div>
     </PageLayout>

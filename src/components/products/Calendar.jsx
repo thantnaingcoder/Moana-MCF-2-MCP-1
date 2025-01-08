@@ -1,3 +1,4 @@
+"use client";
 import PageLayout from "../PageLayout";
 import CalendarPng from "../../assets/products-images/calendar.png";
 import Ass1 from "../../assets/products-images/add1.png";
@@ -5,8 +6,10 @@ import Ass2 from "../../assets/products-images/ass2.png";
 import PrimaryButton from "../PrimaryButton";
 import Image from "next/image";
 import PngToPdfDownloader from "./PngToPdfDownloader";
+import { useRef } from "react";
 
 const Calendar = () => {
+  const contentRef = useRef(null);
   return (
     <PageLayout>
       <div className=" mx-2 my-20 grid grid-cols-1 md:grid-cols-2 gap-10">
@@ -34,12 +37,12 @@ const Calendar = () => {
               </p>
             </div>
 
-            <PngToPdfDownloader  imageName="calender" imageIdName="calender-png-photo"/>
+            <PngToPdfDownloader  imageName="calender" imageIdName="calender-png-photo"  ref={contentRef} />
           </div>
           {/* <Image className=" absolute bottom-0 -right-52  " src={Ass2} alt="Ass2" /> */}
         </div>
 
-        <div className=" order-1 md:order-1  md:relative w-full h-full flex justify-center md:justify-start">
+        <div ref={contentRef} className=" order-1 md:order-1  md:relative w-full h-full flex justify-center md:justify-start">
           <Image
             id="calender-png-photo"
             className=" max-w-[70%] md:max-w-full "

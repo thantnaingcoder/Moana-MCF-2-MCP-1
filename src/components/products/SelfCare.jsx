@@ -1,10 +1,13 @@
+"use client";
 import PageLayout from "../PageLayout";
 import SelfCarePng from "../../assets/products-images/self-care/self-care-check.png";
 import SelfCareBackgroundPng from "../../assets/products-images/self-care/bg-self.png";
 import PrimaryButton from "../PrimaryButton";
 import Image from "next/image";
 import PngToPdfDownloader from "./PngToPdfDownloader";
+import { useRef } from "react";
 const SelfCare = () => {
+  const contentRef = useRef(null);
   return  <PageLayout>
   <div className=" mx-2 my-10 md:my-20 grid grid-cols-1 md:grid-cols-2 gap-10">
     <div className=" order-2  relative">
@@ -37,7 +40,7 @@ const SelfCare = () => {
           </li>
         </div>
 
-        <PngToPdfDownloader  imageName="self-care" imageIdName="self-care-photo"/>
+        <PngToPdfDownloader  imageName="self-care" imageIdName="self-care-photo" ref={contentRef}/>
       </div>
       <Image
         className=" absolute bottom-5 scale-95 opacity-50"
@@ -46,7 +49,7 @@ const SelfCare = () => {
       />
     </div>
 
-    <div className="md:relative order-1  w-full h-full flex justify-center md:justify-end">
+    <div ref={contentRef} className="md:relative order-1  w-full h-full flex justify-center md:justify-end">
       <Image
         id="self-care-photo"
         className="  max-w-[70%] md:max-w-full "
