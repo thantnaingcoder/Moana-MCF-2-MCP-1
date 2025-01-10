@@ -1,6 +1,6 @@
 
 import CharacterProfile from "@/components/characters/CharacterProfile";
-import Footer from "@/components/characters/Footer";
+
 import NewsLetter from "@/components/characters/NewsLetter";
 import WaveDivider from "@/components/characters/WaveDivider";
 import heroSection from "../../../assets/moana character/heroCharacter.png";
@@ -11,6 +11,7 @@ import vthree from "../../../assets/moana character/Voice actor/v3.png";
 import vfour from "../../../assets/moana character/Voice actor/v4.png";
 import vfive from "../../../assets/moana character/Voice actor/v5.png";
 import vsix from "../../../assets/moana character/Voice actor/v6.png";
+import AboutHeroSession from "@/components/about/AboutHeroSession";
 
 const CharactersPage = () => {
   const castMembers = [
@@ -47,23 +48,9 @@ const CharactersPage = () => {
     // Add more cast members...
   ];
   return (
-    <div className="min-h-screen">
+    <div >
       <main>
-        <section className="relative min-h-[400px]">
-          {/* Background Image */}
-          <Image
-            src={heroSection} // Replace with the actual image path
-            alt="Hero Background"
-            objectPosition="center"
-            className="z-0"
-            priority // Optional: Preloads image for better performance
-          />
-          <div className="container mx-auto px-4 py-16 absolute top-36 font-label right-0">
-            <h1 className="text-center text-4xl font-bold text-moana-700">
-              Home / Characters
-            </h1>
-          </div>
-        </section>
+        <AboutHeroSession photo={heroSection} page="Characters" />
         {/* <WaveDivider /> */}
 
         <section className="bg-white py-10">
@@ -101,7 +88,7 @@ const CharactersPage = () => {
         <NewsLetter />
       </main>
 
-      <Footer />
+      
     </div>
   );
 };
