@@ -198,7 +198,7 @@ export default function MusicPlayer() {
               </Button>
               
             </div>
-            <div className='flex items-center gap-4'>
+            <div className='hidden md:flex items-center gap-4'>
             <CirclePlus className="h-5 w-5" />
              <p>Save on spotify</p>
             </div>

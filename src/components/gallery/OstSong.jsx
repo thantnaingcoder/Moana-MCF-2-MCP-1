@@ -5,7 +5,7 @@ const OstSong = () => {
   return (
     <PageLayout>
       <div className=" my-10">
-        <div>
+        <div className="px-5 md:px-0">
         <h1 className=" text-3xl md:text-5xl font-heading text-gradient mb-5 ">
           OST HiLIGHTS
         </h1>

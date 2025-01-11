@@ -11,7 +11,7 @@ const WeeklyPlanner = () => {
   const contentRef = useRef(null);
   return (
     <PageLayout>
-      <div className=" mx-2 my-10 md:my-20 grid grid-cols-1 md:grid-cols-2 gap-10">
+      <div className=" mx-2 my-10 md:my-16 grid grid-cols-1 md:grid-cols-2 gap-10">
         <div className=" order-2 md:order-1 relative">
           <div className="  space-y-8">
             <h1 className=" text-3xl md:text-5xl font-heading text-gradient  ">
