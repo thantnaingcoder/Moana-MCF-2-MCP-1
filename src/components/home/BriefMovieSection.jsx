@@ -4,11 +4,11 @@ import Flower from "@/assets/home/flower.png";
 import Image from "next/image";
 import PrimaryButton from "../PrimaryButton";
 import PageLayout from "../PageLayout";
+import Link from "next/link";
 
 const BriefMovieSection = () => {
   return (
     <section className="w-full px-5 xl:px-0 overflow-hidden mb-10 ">
-    
       <PageLayout>
         <div className="flex lg:flex-row flex-col justify-start lg:justify-between">
           <div className="w-full mb-7 lg:w-1/2 ">
@@ -50,7 +50,9 @@ const BriefMovieSection = () => {
               alt="wave"
               className="absolute max-[320px]:top-24  max-[375px]:top-18 top-14 md:top-12   lg:top-0 right-5 lg:right-0 max-[320px]:w-full max-[375px]:w-4/5 max-[375px]:opacity-50 w-2/3 md:w-2/5 lg:w-2/3 -z-10 opacity-85"
             />
-            <PrimaryButton> Read more </PrimaryButton>
+            <Link href="/about">
+              <PrimaryButton> Read more </PrimaryButton>
+            </Link>
           </div>
         </div>
       </PageLayout>
