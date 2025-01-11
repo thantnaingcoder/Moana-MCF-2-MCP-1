@@ -112,7 +112,7 @@ export default function MakingOfTheMovie() {
               {videos.map((video, index) => (
                 <CarouselItem
                   key={video.id}
-                  className=" md:basis-1/2 lg:basis-1/3"
+                  className="  md:basis-1/2 lg:basis-1/3"
                 >
                   <CardContent className="h-full !p-0 flex flex-col justify-between">
                     <div key={video.videoId} className=" w-full h-full">
