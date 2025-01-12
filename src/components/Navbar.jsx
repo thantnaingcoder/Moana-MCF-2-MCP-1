@@ -3,11 +3,14 @@ import Image from "next/image";
 import Logo from "../assets/home-logo.png";
 
 import PageLayout from "./PageLayout";
-
+import { AnimatePresence, motion } from "motion/react";
 import { usePathname } from "next/navigation";
 import Link from "next/link";
+import { LuMenu, LuX } from "react-icons/lu";
+import { useState } from "react";
 const Navbar = () => {
   const pathname = usePathname();
+  const [isOpen, setIsOpen] = useState(false);
   const navbarItem = [
     {
       name: "Home",
@@ -30,64 +33,83 @@ const Navbar = () => {
       href: "/gallery",
     },
   ];
+
+  const handleMenuOpen = () => {
+    setIsOpen(!isOpen);
+  };
   return (
     <>
-      <nav className=" mx-auto max-w-7xl w-full ">
-        <nav className=" dark:bg-gray-900">
-          <div className="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-4">
-            <div className="flex items-center space-x-3 rtl:space-x-reverse">
+      <PageLayout>
+        <motion.nav
+          initial={{ y: 20, opacity: 0 }}
+          animate={{ y: 0, opacity: 1 }}
+          transition={{
+            duration: 0.6,
+            ease: "linear",
+          }}
+          className=" flex justify-between items-center py-6"
+        >
+          <div className=" flex items-center space-x-3 rtl:space-x-reverse">
+            <Link href={"/"}>
               <Image src={Logo} className="h-8" alt="Flowbite Logo" />
-              {/* <span className="self-center text-2xl font-semibold whitespace-nowrap dark:text-white">Flowbite</span> */}
-            </div>
-            <button
-              data-collapse-toggle="navbar-default"
-              type="button"
-              className="inline-flex items-center p-2 w-10 h-10 justify-center text-sm text-gray-500 rounded-lg md:hidden hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200 dark:text-gray-400 dark:hover:bg-gray-700 dark:focus:ring-gray-600"
-              aria-controls="navbar-default"
-              aria-expanded="false"
-            >
-              <span className="sr-only">Open main menu</span>
-              <svg
-                className="w-5 h-5"
-                aria-hidden="true"
-                xmlns="http://www.w3.org/2000/svg"
-                fill="none"
-                viewBox="0 0 17 14"
-              >
-                <path
-                  stroke="currentColor"
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  strokeWidth={2}
-                  d="M1 1h15M1 7h15M1 13h15"
-                />
-              </svg>
-            </button>
-            <div
-              className="hidden w-full md:block md:w-auto"
-              id="navbar-default"
-            >
-              <ul className="font-medium flex flex-col p-4 md:p-0 mt-4 border  rounded-lg md:flex-row md:space-x-8 rtl:space-x-reverse md:mt-0 md:border-0 dark:bg-gray-800 md:dark:bg-gray-900 dark:border-gray-700">
-                {navbarItem.map((item, index) => (
-                  <li key={index} className="md:mr-0">
-                    <Link
-                      href={item.href}
-                      className={` ${
-                        pathname === item.href
-                          ? "text-moana-500"
-                          : "text-gray-400"
-                      } block py-2 px-3  rounded md:bg-transparent  md:p-0 dark:text-white md:dark:text-blue-500`}
-                      aria-current="page"
-                    >
-                      {item.name}{" "}
-                    </Link>
-                  </li>
-                ))}
-              </ul>
-            </div>
+            </Link>
           </div>
-        </nav>
-      </nav>
+
+          <ul className="hidden lg:flex items-center gap-12">
+            {navbarItem.map((item, index) => (
+              <li key={index}>
+                <Link
+                  href={item.href}
+                  className={`${
+                    item.href === pathname
+                      ? "text-moana-500 underline underline-offset-8"
+                      : "text-gray-400"
+                  } hover:text-moana-500 duration-300`}
+                >
+                  {item.name}
+                </Link>
+              </li>
+            ))}
+          </ul>
+          <div className="lg:hidden block pr-5 ">
+            <button onClick={handleMenuOpen}>
+              {isOpen ? (
+                <LuX className="size-6" />
+              ) : (
+                <LuMenu className="size-6" />
+              )}
+            </button>
+          </div>
+        </motion.nav>
+        <AnimatePresence>
+          {isOpen && (
+            <motion.div
+              initial={{ opacity: 0, height: 0 }}
+              animate={{ opacity: 1, height: "auto" }}
+              exit={{ opacity: 0, height: 0 }}
+              transition={{ duration: 0.3, ease: "easeInOut" }}
+              className="lg:hidden bg-white border-t"
+            >
+              <div className="px-2 pt-2 pb-3 space-y-1">
+                {navbarItem.map((item) => (
+                  <Link
+                    key={item.name}
+                    href={item.href}
+                    className={`${
+                      item.href === pathname
+                        ? "bg-cyan-50 text-cyan-500"
+                        : "text-gray-600 hover:bg-gray-50 hover:text-cyan-500"
+                    } group flex items-center px-3 py-2 rounded-md text-base font-medium transition-colors duration-200 ease-in-out`}
+                    onClick={() => setIsOpen(!isOpen)}
+                  >
+                    {item.name}
+                  </Link>
+                ))}
+              </div>
+            </motion.div>
+          )}
+        </AnimatePresence>
+      </PageLayout>
     </>
   );
 };

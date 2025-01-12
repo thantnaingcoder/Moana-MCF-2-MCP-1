@@ -19,7 +19,9 @@ const AccordionItem = ({
         className="w-full py-4 flex items-center justify-between text-left hover:bg-neutral-50 transition-colors"
         onClick={handleToggleFaq}
       >
-        <span className="text-lg font-medium text-neutral-800">{question}</span>
+        <span className="text-neutral-900   max-[320px]:text-wrap  text-nowrap md:text-base lg:text-xl ">
+          {question}
+        </span>
         <motion.div
           animate={{ rotate: isOpen ? 180 : 0 }}
           transition={{ duration: 0.3, ease: "easeInOut" }}
@@ -39,8 +41,10 @@ const AccordionItem = ({
             exit={{ height: 0, opacity: 0 }}
             transition={{ duration: 0.3, ease: "easeInOut" }}
             className="overflow-hidden"
-          >
-            <div className="py-4 bg-white text-neutral-600">{answer}</div>
+          > 
+            <div className=" py-2 md:py-4 bg-white  text-xs leading-8 tracking-wide sm:text-sm lg:text-[16px] xl:text-lg 2xl:text-xl  text-neutral-700 ">
+              {answer}
+            </div>
           </motion.div>
         )}
       </AnimatePresence>

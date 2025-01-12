@@ -32,15 +32,7 @@ const FAQSection = () => {
             Frequently Asked Questions
           </h1>
           <div className=" w-full sm:max-w-5xl mx-0 sm:mx-auto  ">
-            <h3 className="text-neutral-900  text-xl max-[320px]:text-wrap  text-nowrap md:text-2xl mb-3">
-              What is the main message of Moana?
-            </h3>
-            <p className=" sm:text-lg  text-neutral-700  leading-7 mb-5">
-              Moana isn't suitable for children under the age of 8 years. We
-              recommend parental guidance for children aged up to 10 years
-              because of the movie's violent and scary scenes. The main messages
-              from this movie are to follow your dreams and be true to yourself.
-            </p>
+           
             <Accordion />
           </div>
         </PageLayout>
