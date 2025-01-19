@@ -4,7 +4,7 @@ import PrimaryButton from "../PrimaryButton";
 
 const NewsLetter = () => {
   return (
-    <div className="relative bg-[url('/ocean-bg.jpg')] bg-cover bg-center py-16">
+    <div className="mx-1 relative bg-[url('/ocean-bg.jpg')] bg-cover bg-center py-16">
       <div className="absolute inset-0 bg-moana-900 container mx-auto mb-10 rounded-lg" />
       <div className="relative container mx-auto px-4 text-center">
         <h2 className="mb-4 text-3xl font-bold text-white">

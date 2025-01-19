@@ -29,7 +29,7 @@ const FanArt = () => {
                        opts={{
                          align: "start",
                        }}
-                       className="w-full "
+                       className="w-full overflow-x-hidden "
                      >
                        <CarouselContent>
                          {fanArts.map((fanArt, index) => (
@@ -39,7 +39,7 @@ const FanArt = () => {
                            >
                              <CardContent className="h-full !p-0 flex flex-col justify-between">
                                <div className=" w-full h-full">
-                                 <div className="relative w-full h-[300px] md:h-[400px]">
+                                 <div className=" w-full h-[300px] md:h-[400px]">
                                 
                                    <Image
                                      src={fanArt}

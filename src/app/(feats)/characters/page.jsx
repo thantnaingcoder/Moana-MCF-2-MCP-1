@@ -1,4 +1,3 @@
-
 import CharacterProfile from "@/components/characters/CharacterProfile";
 
 import NewsLetter from "@/components/characters/NewsLetter";
@@ -12,6 +11,7 @@ import vfour from "../../../assets/moana character/Voice actor/v4.png";
 import vfive from "../../../assets/moana character/Voice actor/v5.png";
 import vsix from "../../../assets/moana character/Voice actor/v6.png";
 import AboutHeroSession from "@/components/about/AboutHeroSession";
+import PageLayout from "@/components/PageLayout";
 
 const CharactersPage = () => {
   const castMembers = [
@@ -48,48 +48,46 @@ const CharactersPage = () => {
     // Add more cast members...
   ];
   return (
-    <div >
-      <main>
-        <AboutHeroSession photo={heroSection} page="Characters" />
-        {/* <WaveDivider /> */}
+    <>
+      <AboutHeroSession photo={heroSection} page="Characters" />
+      {/* <WaveDivider /> */}
 
-        <section className="bg-white py-10">
-          <div className="container mx-auto px-4">
-            <h2 className="text-center text-2xl font-bold text-moana-700 font-heading mb-8">
-              Cast (Voice Actor)
-            </h2>
-            <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
-              {castMembers.map((actor, index) => (
-                <div
-                  key={index}
-                  className="flex flex-col items-center text-center rounded-lg hover:shadow-lg transition-shadow duration-300"
-                >
-                  <Image
-                    src={actor.image}
-                    alt={actor.name}
-                    layout="responsive"
-                    objectFit="cover"
-                    className="rounded-md"
-                  />
+      <PageLayout>
+        <div className=" relative mx-auto py-4">
+          <h2 className="text-center text-2xl font-bold text-moana-700 font-heading mb-8">
+            Cast (Voice Actor)
+          </h2>
+          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
+            {castMembers.map((actor, index) => (
+              <div
+                key={index}
+                className="flex flex-col items-center text-center rounded-lg transition-shadow duration-300"
+              >
+                <Image
+                  src={actor.image}
+                  alt={actor.name}
+                  layout="responsive"
+                  objectFit="cover"
+                  className="rounded-md"
+                />
 
-                  <h3 className="text-lg font-bold text-neutral-800 font-heading">
-                    {actor.name}
-                  </h3>
-                  <p className="text-sm text-neutral-600 font-heading">{actor.role}</p>
-                </div>
-              ))}
-            </div>
+                <h3 className="text-lg font-bold text-neutral-800 font-heading">
+                  {actor.name}
+                </h3>
+                <p className="text-sm text-neutral-600 font-heading">
+                  {actor.role}
+                </p>
+              </div>
+            ))}
           </div>
-        </section>
+        </div>
 
         {/* <WaveDivider /> */}
-        <CharacterProfile/>
+        <CharacterProfile />
 
         <NewsLetter />
-      </main>
-
-      
-    </div>
+      </PageLayout>
+    </>
   );
 };
 

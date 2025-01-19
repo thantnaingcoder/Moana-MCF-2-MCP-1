@@ -86,7 +86,7 @@ export default function MakingOfTheMovie() {
 
   return (
     <PageLayout>
-      <div className=" select-none md:my-10  ">
+      <div className="overflow-x-hidden select-none md:my-10  ">
         <div className="mb-10  flex justify-center ">
           <div className="text-3xl relative block font-heading  md:text-5xl font-bold text-gradient tracking-wide">
             MAKING OF THE MOVIE

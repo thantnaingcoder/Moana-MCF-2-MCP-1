@@ -8,7 +8,7 @@ import PrimaryButton from "../PrimaryButton";
 
 const CharacterProfile = () => {
   return (
-    <div className="relative mb-10">
+    <div className=" overflow-hidden relative md:mb-10">
       <Image
         src={section}
         alt="Background Image"
@@ -38,7 +38,6 @@ const CharacterProfile = () => {
                 alt="Moana character"
                 width={200}
                 height={100}
-                
               />
               <Image
                 src={underwave}
@@ -51,19 +50,19 @@ const CharacterProfile = () => {
           </div>
 
           {/* Character Info */}
-          <div className="">
-            <h1 className="text-6xl font-bold text-moana-900 tracking-wide font-heading">
+          <div className=" ">
+            <h1 className="md:text-6xl font-bold text-moana-900 tracking-wide font-heading">
               MOANA
             </h1>
 
             <p className="text-neutral-700 font-label text-nowrap">
               Moana is a determined, positive and energetic individual who is
               the <br /> daughter of the leader of the island of Motunui. She is
-              content with her <br /> life on the island but is drawn to the sea. When
-              her island is in danger <br /> from a sinister force, Moana leaves her
-              familiar surroundings and <br /> ventures out beyond the reef to correct
-              a wrong, protect her community, <br /> and discover the truth she has
-              been seeking throughout her life.
+              content with her <br /> life on the island but is drawn to the
+              sea. When her island is in danger <br /> from a sinister force,
+              Moana leaves her familiar surroundings and <br /> ventures out
+              beyond the reef to correct a wrong, protect her community, <br />{" "}
+              and discover the truth she has been seeking throughout her life.
             </p>
 
             {/* Character Attributes */}

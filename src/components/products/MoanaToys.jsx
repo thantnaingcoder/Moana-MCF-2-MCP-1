@@ -91,7 +91,7 @@ const MoanaToys = () => {
               </motion.div>
             </AnimatePresence>
 
-            <div className=" absolute -bottom-5 md:bottom-10 ms-20  w-full   flex  gap-5 md:gap-20">
+            <div className="flex justify-around items-center ">
               {productData.map((_, index) => (
                 <button
                   key={index}

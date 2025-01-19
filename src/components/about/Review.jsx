@@ -42,7 +42,7 @@ const Review = () => {
 
   return (
     <PageLayout>
-      <div className=" px-3">
+      <div className="overflow-x-hidden px-3">
         <div className="my-20">
           <h1 className="text-3xl mb-5 text-center font-heading  md:text-5xl font-bold text-gradient tracking-wide">
             Critics Review
